@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Number Guessing Game 🎲</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    input { padding: 8px; margin: 10px; }
+    button { padding: 8px 15px; }
+    .message { margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Guess the Number (1 - 100) 🎯</h1>
+  <input type="number" id="guess" placeholder="Enter your guess">
+  <button onclick="checkGuess()">Submit</button>
+  <div class="message" id="message"></div>
+
+  <script>
+    const secret = Math.floor(Math.random() * 100) + 1;
+
+    function checkGuess() {
+      let guess = document.getElementById("guess").value;
+      let msg = document.getElementById("message");
+
+      if (!guess) {
+        msg.innerHTML = "⚠️ Please enter a number!";
+        return;
+      }
+
+      guess = parseInt(guess);
+
+      if (guess === secret) {
+        msg.innerHTML = "🎉 Congratulations! You guessed it right!";
+      } else if (guess > secret) {
+        msg.innerHTML = "📉 Too high! Try again.";
+      } else {
+        msg.innerHTML = "📈 Too low! Try again.";
+      }
+    }
+  </script>
+</body>
+</html>
+
